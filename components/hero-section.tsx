@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const Hero: React.FC = () => {
   return (
@@ -45,9 +46,11 @@ const Hero: React.FC = () => {
           games, AI-powered learning, and real academic wins.
         </p>
         
-        <button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-          Join Waitlist
-        </button>
+        <Link href="/waitlist">
+          <button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+            Join Waitlist
+          </button>
+        </Link>
       </div>
     </section>
   );

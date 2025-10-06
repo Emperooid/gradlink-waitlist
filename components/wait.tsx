@@ -1,4 +1,5 @@
 // app/components/Hero.tsx
+import Link from 'next/link';
 const Wait = () => {
   return (
     <section className="flex items-center justify-center min-h-screen bg-[#effffd] px-4">
@@ -7,9 +8,11 @@ const Wait = () => {
           <h1 className="text-4xl font-semibold text-black leading-tight">
             You Can't Afford To Miss Out
           </h1>
-          <button className="bg-[#8b5cf6] hover:bg-[#7c3aed] transition-all text-white px-6 py-3 rounded-lg text-base font-semibold shadow flex items-center gap-2 w-fit">
-            Join the Waitlist <span>→</span>
-          </button>
+          <Link href="/waitlist">
+            <button className="bg-[#8b5cf6] hover:bg-[#7c3aed] transition-all text-white px-6 py-3 rounded-lg text-base font-semibold shadow flex items-center gap-2 w-fit">
+              Join the Waitlist <span>→</span>
+            </button>
+          </Link>
         </div>
         <div className="text-gray-700 text-lg leading-relaxed">
           <p>
@@ -23,3 +26,4 @@ const Wait = () => {
 };
 
 export default Wait;
+
