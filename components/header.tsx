@@ -36,7 +36,7 @@ const Header: React.FC = () => {
             <span className="text-white font-bold text-lg sm:text-xl">G</span>
           </div>
           <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-            Gradlink
+            Gradlink-Ai
           </span>
         </div>
 
@@ -50,14 +50,14 @@ const Header: React.FC = () => {
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
           </a>
           <a 
-            href="#" 
+            href="#FeaturesSection" 
             className="relative text-gray-700 hover:text-purple-600 transition-all duration-300 font-medium group"
           >
             Features
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
           </a>
           <a 
-            href="#" 
+            href="Footer" 
             className="relative text-gray-700 hover:text-purple-600 transition-all duration-300 font-medium group"
           >
             Contact Us
@@ -114,14 +114,14 @@ const Header: React.FC = () => {
             Home
           </a>
           <a 
-            href="#" 
+            href="#features" 
             className="block text-gray-700 hover:text-purple-600 transition-colors duration-200 font-medium py-2 border-b border-gray-100 last:border-b-0"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Features
           </a>
           <a 
-            href="#" 
+            href="#contact" 
             className="block text-gray-700 hover:text-purple-600 transition-colors duration-200 font-medium py-2 border-b border-gray-100 last:border-b-0"
             onClick={() => setIsMobileMenuOpen(false)}
           >

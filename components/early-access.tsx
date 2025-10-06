@@ -9,7 +9,7 @@ const EarlyAccessPerks: React.FC = () => {
       <div className="absolute bottom-0 left-0 w-72 h-72 bg-purple-400 rounded-full blur-2xl opacity-15 transform -translate-x-1/2 translate-y-1/2"></div>
 
       {/* Control Panel Icons */}
-      <div className="absolute right-6 top-1/2 transform -translate-y-1/2 space-y-4">
+      {/* <div className="absolute right-6 top-1/2 transform -translate-y-1/2 space-y-4">
         <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center">
           <span className="text-white text-xs font-bold">2x</span>
         </div>
@@ -25,7 +25,7 @@ const EarlyAccessPerks: React.FC = () => {
         <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center">
           <div className="w-6 h-6 bg-white rounded-sm"></div>
         </div>
-      </div>
+      </div> */}
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
