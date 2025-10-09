@@ -40,11 +40,11 @@ const Hero: React.FC = () => {
         </h1>
 
         {/* Added subtle subheading */}
-        <div className="inline-block mb-8">
+        {/* <div className="inline-block mb-8">
           <p className="text-2xl md:text-3xl font-semibold text-blue-600">
-            Fun
+            
           </p>
-        </div>
+        </div> */}
 
         {/* Main description */}
         <p className="text-base md:text-lg text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed font-normal">
