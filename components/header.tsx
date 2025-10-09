@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,33 +32,34 @@ const Header: React.FC = () => {
     >
       <nav className="flex items-center justify-between max-w-7xl mx-auto">
         {/* Logo */}
-        <div className="flex items-center space-x-2 group cursor-pointer">
-          <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-purple-600 to-purple-800 rounded-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-lg">
-            <span className="text-white font-bold text-lg sm:text-xl">G</span>
-          </div>
-          <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-            Gradlink-Ai
-          </span>
-        </div>
+        <Link href="/" className="flex items-center">
+            <Image 
+              src="/gradlink-logo.png" 
+              alt="GradLink AI Logo" 
+              width={48} 
+              height={48} 
+              className="h-12 w-12 object-contain drop-shadow-lg hover:drop-shadow-xl transition-all duration-300 transform hover:scale-110" 
+            />
+          </Link>
 
         {/* Navigation Links - Desktop */}
         <div className="hidden lg:flex items-center space-x-8">
           <a 
-            href="#" 
+            href="#home" 
             className="relative text-gray-700 hover:text-purple-600 transition-all duration-300 font-medium group"
           >
             Home
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
           </a>
           <a 
-            href="#FeaturesSection" 
+            href="#features" 
             className="relative text-gray-700 hover:text-purple-600 transition-all duration-300 font-medium group"
           >
             Features
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
           </a>
           <a 
-            href="Footer" 
+            href="#contact" 
             className="relative text-gray-700 hover:text-purple-600 transition-all duration-300 font-medium group"
           >
             Contact Us
@@ -107,7 +109,7 @@ const Header: React.FC = () => {
       >
         <div className="px-4 py-6 space-y-4">
           <a 
-            href="#" 
+            href="#home" 
             className="block text-gray-700 hover:text-purple-600 transition-colors duration-200 font-medium py-2 border-b border-gray-100 last:border-b-0"
             onClick={() => setIsMobileMenuOpen(false)}
           >
