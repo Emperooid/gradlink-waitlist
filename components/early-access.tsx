@@ -152,7 +152,7 @@ const EarlyAccessPerks: React.FC = () => {
             {/* CTA Button */}
             <div className="flex justify-center">
               <Link href="/waitlist">
-                <button className="bg-purple-500 hover:bg-purple-400 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                <button className="bg-blue-500 hover:bg-blue-400 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                   Join the Waitlist
                 </button>
               </Link>
