@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { supabaseAdmin } from "@/lib/supabase";
 
-const resend = new Resend(process.env.RESEND_API_KEY!);
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null;
 const WHATSAPP_INVITE_LINK = "https://chat.whatsapp.com/Kl5Fq8mYkYJ3k7v1";
 
 export async function POST(request: NextRequest) {
@@ -77,33 +78,37 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Send confirmation email via Resend
-    try {
-      await resend.emails.send({
-        from: "GradLink AI <noreply@gradlink.app>",
-        to: email,
-        subject: "🎓 Welcome to GradLink AI — Your Journey Starts Here!",
-        html: `
-          <h2>Hi ${fullName},</h2>
-          <p>You're officially part of the first wave of students joining GradLink AI, Africa's campus-to-career platform built by students, for students.</p>
-          
-          <h3>✅ Here's what's next:</h3>
-          <ul>
-            <li>Join our exclusive WhatsApp community of early users</li>
-            <li>Get access to mentorship and beta features</li>
-            <li>Earn your Founding Member badge</li>
-          </ul>
-          
-          <p><strong>👉 <a href="${WHATSAPP_INVITE_LINK}">Join the WhatsApp Group</a></strong></p>
-          
-          <p>Keep an eye out for updates — your personalized GradLink dashboard is coming soon!</p>
-          
-          <p>Best regards,<br>The GradLink AI Team</p>
-        `,
-      });
-    } catch (emailError) {
-      console.error("Email sending failed:", emailError);
-      // Don't fail the request if email fails, user is still registered
+    // Send confirmation email via Resend (only if API key is available)
+    if (resend && RESEND_API_KEY) {
+      try {
+        await resend.emails.send({
+          from: "GradLink AI <noreply@gradlink.app>",
+          to: email,
+          subject: "🎓 Welcome to GradLink AI — Your Journey Starts Here!",
+          html: `
+            <h2>Hi ${fullName},</h2>
+            <p>You're officially part of the first wave of students joining GradLink AI, Africa's campus-to-career platform built by students, for students.</p>
+            
+            <h3>✅ Here's what's next:</h3>
+            <ul>
+              <li>Join our exclusive WhatsApp community of early users</li>
+              <li>Get access to mentorship and beta features</li>
+              <li>Earn your Founding Member badge</li>
+            </ul>
+            
+            <p><strong>👉 <a href="${WHATSAPP_INVITE_LINK}">Join the WhatsApp Group</a></strong></p>
+            
+            <p>Keep an eye out for updates — your personalized GradLink dashboard is coming soon!</p>
+            
+            <p>Best regards,<br>The GradLink AI Team</p>
+          `,
+        });
+      } catch (emailError) {
+        console.error("Email sending failed:", emailError);
+        // Don't fail the request if email fails, user is still registered
+      }
+    } else {
+      console.log("Resend API key not configured, skipping email send");
     }
 
     return NextResponse.json({
