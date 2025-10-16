@@ -17,6 +17,9 @@ const SignupForm = () => {
     whyJoining: "",
   });
 
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -29,9 +32,10 @@ const SignupForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
-      const response = await fetch("/api/mail", {
+      const response = await fetch("/api", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,8 +43,10 @@ const SignupForm = () => {
         body: JSON.stringify(formData),
       });
 
+      const result = await response.json();
+
       if (response.ok) {
-        alert("🎉 Welcome to the waitlist! Check your email for confirmation.");
+        setIsSubmitted(true);
         setFormData({
           fullName: "",
           email: "",
@@ -53,15 +59,16 @@ const SignupForm = () => {
           whyJoining: "",
         });
       } else {
-        alert("Something went wrong. Please try again.");
+        alert(result.message || "Something went wrong. Please try again.");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("Network error. Please check your connection and try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 px-4 py-8 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Glowing background accents */}
@@ -313,7 +320,7 @@ const SignupForm = () => {
               type="submit"
               className="w-full mt-8 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white py-3 sm:py-4 rounded-xl font-semibold text-sm sm:text-base transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-purple-200"
             >
-              Join Waitlist - It's Free!
+              {isLoading ? "Joining Waitlist..." : "Join Waitlist - It's Free!"}
             </button>
 
             {/* Footer */}
